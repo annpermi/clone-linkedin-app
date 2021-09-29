@@ -65,6 +65,11 @@ const ShareBox = styled(CommonCard)`
       min-height: 48px;
       background: transparent;
       border: none;
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+
+      /* Add color for svg images */
       &:first-child {
         img {
           filter: invert(73%) sepia(5%) saturate(7435%) hue-rotate(181deg)
@@ -87,6 +92,41 @@ const ShareBox = styled(CommonCard)`
         img {
           filter: invert(62%) sepia(48%) saturate(1470%) hue-rotate(312deg)
             brightness(121%) contrast(108%);
+        }
+      }
+    }
+
+    &:first-child {
+      display: flex;
+      align-items: center;
+      padding: 8px 16px 0px 16px;
+      img {
+        width: 48px;
+        border-radius: 50%;
+        margin-right: 8px;
+      }
+      button {
+        margin: 4px 0;
+        flex-grow: 1;
+        border-radius: 35px;
+        padding-left: 16px;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        background-color: white;
+        text-align: left;
+      }
+    }
+    &:nth-child(2) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding-bottom: 4px;
+
+      button {
+        img {
+          margin: 0 4px 0 -2px;
+        }
+        span {
+          color: #70b5f9;
         }
       }
     }
