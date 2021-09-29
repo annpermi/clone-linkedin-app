@@ -299,11 +299,23 @@ const SocialActions = styled.div`
   margin: 0;
   min-height: 40px;
   padding: 4px 8px;
+
+  img {
+    filter: invert(48%) sepia(2%) saturate(16%) hue-rotate(338deg)
+      brightness(95%) contrast(85%);
+  }
+
   button {
     display: inline-flex;
     align-items: center;
     padding: 8px;
-    color: #00000099;
+    color: #777777;
+  }
+
+  @media (min-width: 768px) {
+    span {
+      margin-left: 8px;
+    }
   }
 `;
 export default Main;
