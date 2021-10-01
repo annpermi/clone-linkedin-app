@@ -295,10 +295,12 @@ const SocialCounts = styled.ul`
 const SocialActions = styled.div`
   align-items: center;
   display: flex;
-  justify-content: flex-start;
+  /* justify-content: flex-start; */
+  justify-content: space-around;
   margin: 0;
   min-height: 40px;
   padding: 4px 8px;
+  flex-wrap: wrap;
 
   img {
     filter: invert(48%) sepia(2%) saturate(16%) hue-rotate(338deg)
@@ -307,9 +309,13 @@ const SocialActions = styled.div`
 
   button {
     display: inline-flex;
+    /* width: 25%; */
     align-items: center;
     padding: 8px;
     color: #777777;
+    background-color: transparent;
+    outline: none;
+    border: none;
   }
 
   @media (min-width: 768px) {
