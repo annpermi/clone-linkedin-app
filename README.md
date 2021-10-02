@@ -1,7 +1,9 @@
 # Linkedin App Clone
 
-> React Router;
+> React Router
 
-> Styled Components;
+> Styled Components
 
-> Redux;
+> Redux
+
+> Firebase

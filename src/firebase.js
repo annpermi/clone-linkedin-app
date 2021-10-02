@@ -1,4 +1,7 @@
-import firebase from "firebase";
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore/lite";
+import { GoogleAuthProvider, getAuth } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCYgV_MWNX4OJ2pa2__nXbfkcSIOKlN4wc",
@@ -10,11 +13,16 @@ const firebaseConfig = {
   measurementId: "G-3BX706BFDK",
 };
 
-const firebaseApp = firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
-const auth = firebase.auth();
-const provider = new firebase.auth.googleAuthProvider();
-const storage = firebase.storage();
+// const firebaseApp = firebase.initializeApp(firebaseConfig);
+const firebaseApp = initializeApp(firebaseConfig);
+// const db = firebaseApp.firestore(); //connect your firebase to database
+const db = getFirestore(firebaseApp);
+// const auth = firebase.auth();
+const auth = getAuth();
+// const provider = new firebase.auth.googleAuthProvider();
+const provider = new GoogleAuthProvider();
+// const storage = firebase.storage(); //store images
+const storage = getStorage(firebaseApp);
 
 export { auth, provider, storage };
 export default db;
