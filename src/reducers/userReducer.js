@@ -5,6 +5,7 @@ const INITIAL_STATE = {
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
+  //its not mutate, its creating new state with new changes
   switch (action.type) {
     case SET_USER:
       return {
