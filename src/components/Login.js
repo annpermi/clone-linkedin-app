@@ -4,7 +4,6 @@ import { signInAPI } from "../actions";
 import { Redirect } from "react-router";
 
 const Login = (props) => {
-  console.log("props", props);
   return (
     <Container>
       {props.user && <Redirect to="/home" />}
