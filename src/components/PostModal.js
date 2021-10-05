@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import ReactPlayer from "react-player";
 import { connect } from "react-redux";
+import { postArticleAPI } from "../actions";
+import firebase from "../firebase";
 
 const PostModal = (props) => {
   const [editorText, setEditorText] = useState("");
@@ -24,6 +26,26 @@ const PostModal = (props) => {
     setShareImage("");
     setVideoLink("");
     setAssetArea(area);
+  };
+
+  const postArticle = (e) => {
+    //prevent any refresh staff
+    e.preventDefault();
+    if (e.target !== e.currentTarget) {
+      return;
+    }
+
+    const payload = {
+      image: shareImage,
+      video: videoLink,
+      user: props.user,
+      description: editorText,
+      // timestamp: firebase.Timestamp.now(),
+      timestamp: new Date(Date.now()).toString(),
+    };
+
+    props.postArticle(payload);
+    reset(e);
   };
 
   //When you click X
@@ -111,8 +133,11 @@ const PostModal = (props) => {
                   Anyone
                 </AssetButton>
               </ShareComment>
-
-              <PostButton disabled={!editorText ? true : false}>
+              {/* Give event details */}
+              <PostButton
+                disabled={!editorText ? true : false}
+                onClick={(event) => postArticle(event)}
+              >
                 Post
               </PostButton>
             </SharedCreation>
@@ -278,12 +303,14 @@ const UploadImage = styled.div`
 `;
 
 const mapStateToProps = (state) => {
-  console.log("state.userReducer", state.userReducer);
   return {
     user: state.userReducer.user,
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({});
+//how to upload video or images
+const mapDispatchToProps = (dispatch) => ({
+  postArticle: (payload) => dispatch(postArticleAPI(payload)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostModal);

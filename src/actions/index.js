@@ -1,8 +1,10 @@
-import { auth, provider } from "../firebase";
-import { signInWithPopup } from "firebase/auth";
+import { auth, provider, storage } from "../firebase";
+import db from "../firebase";
+// import { getDatabase, ref, set } from "firebase/database";
+// import { signInWithPopup } from "firebase/auth";
 import { SET_USER } from "./actionType";
 
-// paylod - all user information
+// payload - all user information
 export const setUser = (payload) => ({
   type: SET_USER,
   user: payload,
@@ -10,7 +12,8 @@ export const setUser = (payload) => ({
 
 export function signInAPI() {
   return (dispatch) => {
-    signInWithPopup(auth, provider)
+    auth
+      .signInWithPopup(provider)
       .then((payload) => {
         // console.log("payload", payload);
         dispatch(setUser(payload.user));
@@ -23,7 +26,6 @@ export function getUserAuth() {
   return (dispatch) => {
     auth.onAuthStateChanged(async (user) => {
       if (user) {
-        console.log(user);
         dispatch(setUser(user));
       }
     });
@@ -38,5 +40,45 @@ export function signOutAPI() {
         dispatch(setUser(null));
       })
       .catch((error) => console.log(error.message));
+  };
+}
+
+//Upload our image
+export function postArticleAPI(payload) {
+  console.log("payload.image", payload.image);
+  return (dispatch) => {
+    if (payload.image != "") {
+      const upload = storage
+        .ref(`images/${payload.image.name}`)
+        .put(payload.image);
+      upload.on(
+        "state_changed",
+        (snapshot) => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+
+          console.log(`Progress: ${progress}%`);
+          if (snapshot.state === "RUNNING") {
+            console.log(`Progress: ${progress}%`);
+          }
+        },
+        (error) => console.log(error.code),
+        async () => {
+          const downloadURL = await upload.snapshot.ref.getDownloadURL();
+          db.collection("articles").add({
+            actor: {
+              description: payload.user.email,
+              title: payload.user.displayName,
+              date: payload.timestamp,
+              image: payload.user.photoURL,
+            },
+            video: payload.video,
+            sharedImg: downloadURL,
+            comments: 0,
+            description: payload.description,
+          });
+        }
+      );
+    }
   };
 }
