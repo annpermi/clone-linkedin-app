@@ -9,20 +9,11 @@ import "firebase/database"; // for realtime database
 import "firebase/firestore"; // for cloud firestore
 import "firebase/messaging"; // for cloud messaging
 import "firebase/functions"; // for cloud functions
+import { firebaseConfig } from "./firebase-config";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyCYgV_MWNX4OJ2pa2__nXbfkcSIOKlN4wc",
-  authDomain: "linkedin-clone-288e7.firebaseapp.com",
-  projectId: "linkedin-clone-288e7",
-  storageBucket: "linkedin-clone-288e7.appspot.com",
-  messagingSenderId: "151679760418",
-  appId: "1:151679760418:web:9e15d490adddd399d1327b",
-  measurementId: "G-3BX706BFDK",
-};
-
-const firebaseApp = firebase.initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig);
 // const firebaseApp = initializeApp(firebaseConfig);
-const db = firebaseApp.firestore(); //connect your firebase to database
+const db = app.firestore(); //connect your firebase to database
 // const db = getFirestore(firebaseApp);
 const auth = firebase.auth();
 // const auth = getAuth();
