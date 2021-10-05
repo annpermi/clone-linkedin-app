@@ -1,0 +1,28 @@
+[debug] [2021-10-05T15:15:39.711Z] ----------------------------------------------------------------------
+[debug] [2021-10-05T15:15:39.712Z] Command:       /usr/local/bin/node /usr/local/bin/firebase init
+[debug] [2021-10-05T15:15:39.713Z] CLI Version:   9.14.0
+[debug] [2021-10-05T15:15:39.713Z] Platform:      darwin
+[debug] [2021-10-05T15:15:39.713Z] Node Version:  v15.11.0
+[debug] [2021-10-05T15:15:39.714Z] Time:          Tue Oct 05 2021 11:15:39 GMT-0400 (Eastern Daylight Time)
+[debug] [2021-10-05T15:15:39.714Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-10-05T15:15:39.718Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-10-05T15:15:39.719Z] > authorizing via signed-in user (perminova.anna85@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/annaperminova/Documents/study/react/clone-linkedin-app/src
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 

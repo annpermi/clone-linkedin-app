@@ -266,7 +266,8 @@ const Work = styled(User)`
 
 const mapStateToProps = (state) => {
   return {
-    user: state.userReducer.user,
+    // user: state.userReducer.user,
+    user: state.userState.user,
   };
 };
 
